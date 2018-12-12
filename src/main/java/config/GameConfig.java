@@ -1,27 +1,30 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package config;
 
 /**
  *
- * @author Jakub
+ * @author Jakub Trhlík
  */
 public class GameConfig {
     
-    static final int MAX_ENEMIES = 10;
-    static final int MOVE_STEP = 10;
-        static final int GRAVITY_STEP = 1;
-          static final int FORCE_STEP = 1;      
-                static final int ANGLE_STEP = 1;
-                
-    static final int TIME_TICK = 10;
-    static final int MAX_X = 500;
-    static final int MAX_Y = 500;
-    static final int INIT_ANGLE=0;
-    static final int  INIT_FORCE=10;
-    static final int  INIT_SCORE=0;
+    public static final int MAX_X = 1000;
+    public static final  int MAX_Y = 700;
+    public static final  int MAX_ENEMIES = 10;
+
+    public static final  int MOVE_STEP = 10;
+    public static final  float GRAVITY_STEP = 1.0f;
+    public static final  float FORCE_STEP = 1.0f;
+    public static final  float ANGLE_STEP = 0.1f;
+    
+    public static final  int TIME_TICK = 20;
+    public static final  int INIT_SCORE = 0;
+    public static final  float INIT_GRAVITY = 10.0f;
+    public static final  float INIT_FORCE = 10.0f;
+    public static final  float INIT_ANGLE = 0.0f;
+
+
+	public static final  int COLLISION_MARGIN = 25;
+	public static final  long COLLISION_LIFETIME = 2000;
+
     
 }

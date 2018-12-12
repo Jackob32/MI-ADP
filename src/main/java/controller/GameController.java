@@ -5,9 +5,12 @@
  */
 package controller;
 
-import cz.fit.dpo.mvcshooter.view.Canvas;
+import command.MoveCannonUpCommand;
+import command.UndoCommand;
+import view.Canvas;
 import java.awt.event.KeyEvent;
 import model.GameModel;
+import proxy.IGameModel;
 
 /**
  *
@@ -15,51 +18,66 @@ import model.GameModel;
  */
 public class GameController {
 
-    private GameModel model;
-    private Canvas view;
+    private IGameModel model;
+    //private Canvas view;
 
-    public GameController(GameModel model) {
+    public GameController(IGameModel model)
+    {
         this.model = model;
     }
 
-    /*
-    public void setView(Canvas view) {
-        this.view = view;
-    }
-     */
-    public void onKeyPress(KeyEvent e) {
-        System.out.println("key pressed: " + e.getKeyChar() + "code " + e.getKeyCode() + " up " + KeyEvent.VK_UP);
+    //public void setView(Canvas view)
+    //{
+    //    this.view = view;
+    //}
 
-        switch (e.getKeyCode()) {
+    public IGameModel getModel()
+    {
+        return this.model;
+    }
+
+    public void onKeyPress(KeyEvent evt)
+    {
+        switch(evt.getKeyCode())
+        {
             case KeyEvent.VK_UP:
-                this.model.moveCannonUp();
+                //this.model.moveCannonUp();
+                this.model.registerCmd( new MoveCannonUpCommand(this.model) );
                 break;
             case KeyEvent.VK_DOWN:
                 this.model.moveCannonDown();
                 break;
             case KeyEvent.VK_SPACE:
-                this.model.moveCannonShoot();
-                    case KeyEvent.VK_LEFT:
-                this.model.moveCannonAimUp();
+                this.model.cannonShoot();
                 break;
-            case KeyEvent.VK_RIGHT:
-                this.model.moveCannonAimDown();
-                break;    
-      case KeyEvent.VK_PLUS:
-                this.model.moveCannonIncForce();
-                break;   
-      case KeyEvent.VK_MINUS:
-                this.model.moveCannonDecForce();
-                break;   
-            default: //nothing
+            case KeyEvent.VK_A:
+                this.model.cannonAimUp();
+                break;
+            case KeyEvent.VK_Z:
+                if((evt.getModifiers() & KeyEvent.CTRL_MASK) != 0)
+                {
+                    this.model.registerCmd( new UndoCommand(this.model) );
+                }else{
+                    this.model.cannonAimDown();
+                }
+                break;
+            case KeyEvent.VK_S:
+                this.model.cannonIncForce();
+                break;
+            case KeyEvent.VK_X:
+                this.model.cannonDecForce();
+                break;
+            case KeyEvent.VK_Q:
+                this.model.toggleShootingMode();
+                break;
+            default:
+                //nothing
         }
 
-        /// misto tohodle, pouzijeme observer
-        ///view.thisIsHowYouForceGuiToRepaint();
-    }
-
-    public GameModel getModel() {
-        return this.model;
+        //if(this.view instanceof Canvas)
+        //{
+        //    this.view.thisIsHowYouForceGuiToRepaint();
+        //}
     }
 
 }

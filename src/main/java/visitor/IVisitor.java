@@ -6,15 +6,20 @@
 package visitor;
 
 import model.Cannon;
+import model.Collision;
+import model.Enemy;
+import model.Missile;
+import model.ModelInfo;
 
 /**
  *
- * @author Jakub
+ * @author Jakub Trhlík
  */
-public class IVisitor {
-
-    public void visitCannon(Cannon aThis) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+public interface IVisitor {
+    void visitEnemy(Enemy enemy);
+    void visitCollision(Collision collision);
+    void visitMissile(Missile missile);
+    void visitCannon(Cannon cannon);
+    void visitInfo(ModelInfo info);
     
 }

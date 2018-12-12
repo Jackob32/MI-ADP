@@ -1,12 +1,14 @@
 package model;
 
+import config.GameConfig;
 import visitor.IVisitor;
+
 
 /**
  *
- * @author Ondrej Stuchlik
+ * @author Jakub Trhlík
  */
-public class GameObject {
+public abstract class GameObject {
 
     private int x = 100;
     private int y = 100;
@@ -27,6 +29,15 @@ public class GameObject {
         this.x = x;
     }
 
-    
+        public boolean collidesWith(GameObject obj2)
+    {
+        boolean bCollides = true;
+
+        bCollides = bCollides && (Math.abs(this.getX() - obj2.getX()) < GameConfig.COLLISION_MARGIN);
+        bCollides = bCollides && (Math.abs(this.getY() - obj2.getY()) < GameConfig.COLLISION_MARGIN);
+
+        return bCollides;
+    }
+        
     public abstract void accept(IVisitor visitor);
  }

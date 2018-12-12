@@ -1,7 +1,8 @@
 package model;
 
 import strategy.IMoveStrategy;
-import strategy.MoveStrategy;
+import strategy.SimpleMoveStrategy;
+import visitor.IVisitor;
 
 /**
  *
@@ -10,39 +11,35 @@ import strategy.MoveStrategy;
 public class Missile extends TimedGameObject {
 
     private int initX;
-    private int initY;
-    private float initAngle;
-    private float initForce;
-private IMoveStrategy moveStrategy;
+  private int initY;
+  private float initAngle;
+  private float initForce;
+  private IMoveStrategy moveStrategy;
+
+  public Missile(int x, int y, float angle, float force, IMoveStrategy moveStrategy) {
+    this.initX = x;
+    this.initY = y;
+    this.initAngle = angle;
+    this.initForce = force;
+    this.moveStrategy = moveStrategy;
+  }
+  
+  public void move()
+  {
+    long lifetime = this.getLifetime();
+
+    int newX = this.moveStrategy.nextPositionX(initX, initAngle, initForce, lifetime);
+    int newY = this.moveStrategy.nextPositionY(initY, initAngle, initForce, lifetime);
+
+    this.setX(newX);
+    this.setY(newY);
+  }
+
+	@Override
+    public void accept(IVisitor visitor) {
+		visitor.visitMissile(this);
+	}
     
     
-    public Missile(int x, int y, float angle, float force,IMoveStrategy movestrategy) {
-        initX = x;
-        initY = y;
-        initAngle = angle;
-        initForce = force;
-        moveStrategy=movestrategy;
-    }
-
-    public void move() {
-        long lifetime = this.getLifetime();
-
-       // int newX = (int)(initX * (initForce * lifetime * Math.sin(initAngle)));
-       int newX = this.moveStrategy.nextPositionX(initX,initAngle,initForce,lifetime);
-        int newY = this.moveStrategy.nextPositionX(initY,initAngle,initForce,lifetime);
-        //int newY = (int)(initY * (initForce * lifetime * Math.cos(initAngle)));
-
-        
-        //strategy
-        
-        
-        this.setX(newX);
-        this.setY(newX);
-      }
-
-    @Override
-    public void accept() {
-        visitor.visitMissile(this);
-    }
 
 }

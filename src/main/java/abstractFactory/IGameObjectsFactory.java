@@ -13,14 +13,14 @@ import model.ModelInfo;
 
 /**
  *
- * @author Jakub
+ * @author Jakub Trhlík
  */
 public interface IGameObjectsFactory {
     
     Cannon createCannon();
     Enemy createEnemy();
     Missile createMissile(int x,int y, float angle, float force);
-    Collision createCollision();
+    Collision createCollision(int x, int y);
     ModelInfo createModelInfo();
     
 }
