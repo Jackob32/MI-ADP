@@ -10,6 +10,7 @@ import java.util.List;
 import visitor.IVisitor;
 
 public class Cannon extends GameObject {
+
     private static IShootingMode SINGLE_MODE = new SingleShootingMode();
     private static IShootingMode DOUBLE_MODE = new DoubleShootingMode();
 
@@ -19,6 +20,9 @@ public class Cannon extends GameObject {
     private IShootingMode shootingMode;
     private List<Missile> shootBatch;
 
+    private boolean moveUP = false;
+    private boolean moveDOWN = false;
+
     public Cannon(IGameObjectsFactory goFact) {
         this.goFact = goFact;
         this.setSingleMode();
@@ -27,6 +31,13 @@ public class Cannon extends GameObject {
     @Override
     public void accept(IVisitor visitor) {
         visitor.visitCannon(this);
+    }
+
+    public void move() {
+
+        if(this.moveDOWN && !this.moveUP) this.moveDown();
+        if(this.moveUP && !this.moveDOWN) this.moveUp();
+        
     }
 
     public List<Missile> shoot() {
@@ -39,8 +50,7 @@ public class Cannon extends GameObject {
 
     }
 
-    public void toggleMode()
-    {
+    public void toggleMode() {
         this.shootingMode.toggleMode(this);
     }
 
@@ -52,8 +62,7 @@ public class Cannon extends GameObject {
         this.shootingMode = SINGLE_MODE;
     }
 
-    public String getShootingModeName()
-    {
+    public String getShootingModeName() {
         return this.shootingMode.getName();
     }
 
@@ -89,9 +98,16 @@ public class Cannon extends GameObject {
         this.setY(this.getY() - GameConfig.MOVE_STEP);
     }
 
+    public void setmoveUp(boolean move) {
+        this.moveUP = move;
+    }
+
     public void moveDown() {
         this.setY(this.getY() + GameConfig.MOVE_STEP);
     }
 
-}
+    public void setmoveDown(boolean move) {
+        this.moveDOWN = move;
+    }
 
+}

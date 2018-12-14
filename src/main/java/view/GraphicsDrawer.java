@@ -13,7 +13,7 @@ import visitor.IVisitor;
 
 /**
  *
- * @author Ondrej Stuchlik
+ * @author Jakub Trhlík
  */
 public class GraphicsDrawer implements IVisitor{
     private static final int INFO_X = 5;

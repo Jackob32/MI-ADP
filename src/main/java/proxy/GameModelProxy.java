@@ -144,5 +144,15 @@ public class GameModelProxy implements IGameModel {
     {
         this.subject.undoLastCmd();
     }
+@Override
+        public void stopMoveCannonUp()
+    {
+        this.subject.stopMoveCannonUp();
+    }
+@Override
+    public void stopMoveCannonDown()
+    {
+        this.subject.stopMoveCannonDown();
+    }
 
 }

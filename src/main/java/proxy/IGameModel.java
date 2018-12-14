@@ -45,7 +45,8 @@ public interface IGameModel
 	public void cannonShoot();
     public void moveCannonUp();
     public void moveCannonDown();
-
+    public void stopMoveCannonUp();
+    public void stopMoveCannonDown();
     // command
     public void registerCmd(AbsGameCommand cmd);
     public void undoLastCmd();

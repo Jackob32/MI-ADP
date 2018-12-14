@@ -1,7 +1,6 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+AbstractFactory
+Class of the Game Objects factory
  */
 package abstractFactory;
 
@@ -19,7 +18,7 @@ import model.ModelInfo;
  */
 public class GameObjectsFactory implements IGameObjectsFactory{
 
-       private GameModel model;
+    private GameModel model;
     private Random random = new Random();
 
     public GameObjectsFactory(GameModel model)
@@ -36,12 +35,12 @@ public class GameObjectsFactory implements IGameObjectsFactory{
     {
         int canX = this.model.getCannon().getX();
         
-        int posX = canX + this.random.nextInt( this.model.getMaxX() - canX );
-        int posY = this.random.nextInt( this.model.getMaxY() );
+        int X = canX + this.random.nextInt( this.model.getMaxX() - canX );
+        int Y = this.random.nextInt( this.model.getMaxY() );
 
         Enemy enemy = new Enemy();
-        enemy.setX(posX);
-        enemy.setY(posY);
+        enemy.setX(X);
+        enemy.setY(Y);
 
         return enemy;        
     }

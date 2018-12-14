@@ -25,7 +25,7 @@ public MainWindow(final GameController controller) {
             view.setModel(model);
 
             this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            this.setTitle("MyShooter");
+            this.setTitle("ADP Shooter");
             this.setResizable(false);
 
             Dimension obrazovka = Toolkit.getDefaultToolkit().getScreenSize();
@@ -37,6 +37,9 @@ public MainWindow(final GameController controller) {
                 @Override
                 public void keyPressed(KeyEvent evt) {
                     controller.onKeyPress(evt);
+                }
+                public void keyReleased(KeyEvent evt) {
+                    controller.onKeyRelease(evt);
                 }
             });
 

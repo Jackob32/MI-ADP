@@ -1,4 +1,10 @@
 package model;
+/*
+Game Model nezavisly na Contolleru a na view
+slouží jako fasáda
+testovatelný, spustitelný i bez view a controlleru
+neobsahuje herní logiku, logika je rozmístěna do příslušných tříd (missile.move() etc)
+*/
 
 import strategy.SimpleMoveStrategy;
 import strategy.IMoveStrategy;
@@ -69,6 +75,7 @@ import command.AbsGameCommand;
             {
                 // this is executed every Tick
                 moveGameObjects();
+                
                 executeCmds();
             }
         }, 0, GameConfig.TIME_TICK);
@@ -123,10 +130,10 @@ import command.AbsGameCommand;
 
     private void moveGameObjects()
     {
+        this.moveCannon();
         this.moveEnemies();
         this.moveMissiles();
         this.handleCollisions();
-
         this.notifyMyObservers();
     }
 
@@ -171,7 +178,10 @@ import command.AbsGameCommand;
             e.move();
         }
     }
-
+    private void moveCannon()
+    {
+            cannon.move();
+    }
     private void moveMissiles()
     {
         Set<Missile> toRemove = new HashSet<Missile>();
@@ -274,16 +284,27 @@ import command.AbsGameCommand;
     
     public void moveCannonUp()
     {
-        this.cannon.moveUp();
+        this.cannon.setmoveUp(true);
         this.notifyMyObservers();
     }
 
     public void moveCannonDown()
     {
-        this.cannon.moveDown();
+        this.cannon.setmoveDown(true);
+        this.notifyMyObservers();
+    }
+        public void stopMoveCannonUp()
+    {
+        this.cannon.setmoveUp(false);
         this.notifyMyObservers();
     }
 
+    public void stopMoveCannonDown()
+    {
+        this.cannon.setmoveDown(false);
+        this.notifyMyObservers();
+    }
+    
 	public IMoveStrategy getActiveMovementStrategy() {
 		return this.activeMovementStrategy;
 	}
