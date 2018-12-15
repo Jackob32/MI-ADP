@@ -1,10 +1,14 @@
 
 package game;
 
+import model.Cannon;
+import model.CannonTest;
+import model.MissileTest;
+import model.ModelTest;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
-import model.GameObjectTest;
+import model.MovingEnemyTest;
 /*
  * Copyright (c) 2018 Jakub.
  * All rights reserved. This program and the accompanying materials
@@ -14,16 +18,17 @@ import model.GameObjectTest;
  *
  * Contributors:
  *    Jakub - initial API and implementation and/or initial documentation
- */
 
 /**
  *
  * @author Jakub
  */
 @RunWith(Suite.class)
-
 @Suite.SuiteClasses({
-   GameObjectTest.class
+   MovingEnemyTest.class,
+   ModelTest.class,
+    MissileTest.class,
+    CannonTest.class,
 })
 
 public class TestA {

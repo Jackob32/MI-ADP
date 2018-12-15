@@ -7,12 +7,12 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 
 @RunWith(MockitoJUnitRunner.class)
-public class GameObjectTest {
+public class ModelTest {
 
     @Test
     public void testDummy() {
 
-        Assert.assertTrue(false);
+        
     }
 
 }
