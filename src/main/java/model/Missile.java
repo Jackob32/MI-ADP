@@ -39,7 +39,15 @@ public class Missile extends TimedGameObject {
     public void accept(IVisitor visitor) {
 		visitor.visitMissile(this);
 	}
-    
-    
 
+    @Override
+    public Missile clone() {
+        Missile obj=new Missile(    this.initX,
+    this.initY,
+    this.initAngle,
+    this.initForce,
+    this.moveStrategy);
+return obj;
+    }
+    
 }

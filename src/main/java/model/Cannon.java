@@ -11,9 +11,6 @@ import visitor.IVisitor;
 
 public class Cannon extends GameObject {
 
-    private static IShootingMode SINGLE_MODE = new SingleShootingMode();
-    private static IShootingMode DOUBLE_MODE = new DoubleShootingMode();
-
     private IGameObjectsFactory goFact;
     private float angle = GameConfig.INIT_ANGLE;
     private float force = GameConfig.INIT_FORCE;
@@ -59,7 +56,7 @@ public class Cannon extends GameObject {
     }
 
     public void setSingleMode() {
-        this.shootingMode = SINGLE_MODE;
+        this.shootingMode = SingleShootingMode.getInstance();
     }
 
     public String getShootingModeName() {
@@ -67,7 +64,7 @@ public class Cannon extends GameObject {
     }
 
     public void setDoubleMode() {
-        this.shootingMode = DOUBLE_MODE;
+        this.shootingMode = DoubleShootingMode.getInstance();
     }
 
     public float getAngle() {
@@ -109,5 +106,13 @@ public class Cannon extends GameObject {
     public void setmoveDown(boolean move) {
         this.moveDOWN = move;
     }
+
+    @Override
+    public Cannon clone() {
+    Cannon obj=new Cannon(this.goFact);
+    obj.setX(this.getX());
+    obj.setY(this.getY());
+    return obj;
+}
 
 }

@@ -54,7 +54,10 @@ public interface IGameModel
     // memento
     public void setMemento(Object memento);
     public Object createMemento();
-	
-	
+
+    public void simpleShootingStrategy();
+    public void parabolicShootingStrategy();
+    public void boomerangShootingStrategy();
+
 	
 }

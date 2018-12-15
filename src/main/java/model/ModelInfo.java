@@ -31,4 +31,10 @@ public class ModelInfo extends GameObject{
     public void accept(IVisitor visitor) {
 		visitor.visitInfo(this);
 	}
+
+    @Override
+    public GameObject clone() {
+       GameObject obj=new ModelInfo(this.model);
+       return obj;
+    }
 }

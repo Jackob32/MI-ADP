@@ -29,6 +29,7 @@ public abstract class GameObject {
         this.x = x;
     }
 
+    
         public boolean collidesWith(GameObject obj2)
     {
         boolean bCollides = true;
@@ -38,6 +39,7 @@ public abstract class GameObject {
 
         return bCollides;
     }
-        
+
+    public abstract GameObject clone();
     public abstract void accept(IVisitor visitor);
  }

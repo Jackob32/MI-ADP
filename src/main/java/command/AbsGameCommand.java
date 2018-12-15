@@ -13,6 +13,7 @@ public abstract class AbsGameCommand
     }
 
     public void extExecute(){
+        // creates memeto before executing the Command
         this.memento = this.subject.createMemento();
         this.execute();
     }

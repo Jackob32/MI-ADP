@@ -19,12 +19,26 @@ import state.IShootingMode;
  */
 public class DoubleShootingMode implements IShootingMode {
 
+private static class Holder {
+ private static final DoubleShootingMode INSTANCE = new DoubleShootingMode();
+ }
+    public static DoubleShootingMode getInstance() {
+ return Holder.INSTANCE;
+ }
+    
      @Override
     public void shoot(Cannon cannon) {
         cannon.aimUp();
         cannon.primitiveShoot();
+        
+        
+        
         cannon.aimDown();
+        
+        
         cannon.aimDown();
+        
+        
         cannon.primitiveShoot();
         cannon.aimUp();
     }

@@ -155,4 +155,19 @@ public class GameModelProxy implements IGameModel {
         this.subject.stopMoveCannonDown();
     }
 
+    @Override
+    public void simpleShootingStrategy() {
+        this.subject.simpleShootingStrategy();
+                }
+
+    @Override
+    public void parabolicShootingStrategy() {
+         this.subject.parabolicShootingStrategy(); 
+    }
+
+    @Override
+    public void boomerangShootingStrategy() {
+        this.subject.boomerangShootingStrategy();
+    }
+
 }

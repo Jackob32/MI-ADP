@@ -11,18 +11,18 @@ import model.Enemy;
 import model.GameModel;
 import model.Missile;
 import model.ModelInfo;
-import model.MovingEnemy;
+import model.SimpleEnemy;
 
 /**
  *
  * @author Jakub
  */
-public class GameObjectsFactory implements IGameObjectsFactory{
+public class SimpleGameObjectsFactory implements IGameObjectsFactory{
 
     private GameModel model;
     private Random random = new Random();
 
-    public GameObjectsFactory(GameModel model)
+    public SimpleGameObjectsFactory(GameModel model)
     {
         this.model = model;
     }
@@ -39,7 +39,7 @@ public class GameObjectsFactory implements IGameObjectsFactory{
         int X = canX + this.random.nextInt( this.model.getMaxX() - canX );
         int Y = this.random.nextInt( this.model.getMaxY() );
 
-        Enemy enemy = new MovingEnemy();
+        Enemy enemy = new SimpleEnemy();
         enemy.setX(X);
         enemy.setY(Y);
 

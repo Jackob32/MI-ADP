@@ -65,6 +65,15 @@ public class GameController {
             case KeyEvent.VK_Q:
                 this.model.toggleShootingMode();
                 break;
+            case KeyEvent.VK_1:
+                this.model.simpleShootingStrategy();
+                break;
+             case KeyEvent.VK_2:
+                this.model.parabolicShootingStrategy();
+                break;
+            case KeyEvent.VK_3:
+                this.model.boomerangShootingStrategy();
+                break;    
             default:
                 //nothing
         }

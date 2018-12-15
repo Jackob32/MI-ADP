@@ -17,8 +17,9 @@ import model.Cannon;
  * @author Jakub Trhlík
  */
 public interface IShootingMode{
-    String getName();
     
+    String getName();
+
     void shoot(Cannon cannon);
     void toggleMode(Cannon cannon);
 }

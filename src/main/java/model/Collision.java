@@ -12,6 +12,14 @@ public class Collision extends TimedGameObject{
 		visitor.visitCollision(this);
 	}
 
+    @Override
+    public Collision clone() {
+        Collision obj = new Collision();
+        obj.setX(this.getX());
+        obj.setY(this.getY());
+        return obj;
+    }
+
     
  
 
